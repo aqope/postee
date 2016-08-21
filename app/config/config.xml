@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<extensions>
+    <version>
+        <path>version/version</path>
+        <active>true</active>
+    </version>
+</extensions>

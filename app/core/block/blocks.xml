@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<blocks>
+	<package>default</package>
+	<base>page/page</base>
+	<abstract>
+		<block>
+			<name>header</name>
+			<template>page/header</template>
+			<class></class>
+		</block>
+		<block>
+			<name>header_includes</name>
+			<template>page/header/includes.phtml</template>
+			<class>Core_Block_Header_Includes</class>
+		</block>
+	</abstract>
+</blocks>

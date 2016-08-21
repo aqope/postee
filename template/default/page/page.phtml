@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<!-- Includes will be added later -->
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<h1>Hello World!</h1>
+			<?php echo get_class($this); ?>
+			<h2><?php echo $this->renderBlock('header');?></h2>
+			<?php $this->renderBlock('header_includes'); ?>
+		</div>
+	</body>
+</html>

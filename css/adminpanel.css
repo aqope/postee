@@ -1,0 +1,42 @@
+
+h1 {
+    font-family: "Consolas";
+    font-size: 26px;
+}
+body .header {
+    height: 125px;
+    width: 100%;
+}
+.header .welcome-bar {
+    width: 100%;
+    height: 75px;
+    /*background-color: rgb(174,174,174);*/
+    background: linear-gradient(left, rgb(74,74,74), rgb(244,244,244));
+    background: -ms-linear-gradient(right, rgb(74,74,74), rgb(174, 174, 174));
+}
+.header .welcome-bar h2 {
+    font-size: 18px;
+    font-family: SansSerif, Raleway, "Gill Sans MT";
+    padding-left: 24px;
+    padding-top: 15px;
+    margin: 0;
+}
+.header .welcome-bar p {
+    padding-left: 85px;
+    font-family: SansSerif, Raleway, "Gill Sans MT";
+    margin-top: 0;
+}
+.header .menu {
+    display: block;
+    width: 100%;
+    height: 56px;
+}
+.header .menu ul {
+
+}
+.header .menu li {
+    display: inline-block;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+}

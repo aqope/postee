@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<includes>
+	<include>
+		<type>js</type>
+		<path>js/default.js</path>
+	</include>
+</includes>
