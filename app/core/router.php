@@ -25,9 +25,8 @@ class Router
         $url = substr($url, strpos($url, "index.php"));
         $url = substr($url, strlen("index.php"));
         $urlExp = explode("/", $url);
-
-
-      if ( count(implode("", $urlExp))  > 1) {        
+        
+      if ( strlen(implode("", $urlExp))  > 1) {        
 
         // Since $urlExp[0] is always ""
         if (!empty($urlExp[1])) {
@@ -38,7 +37,7 @@ class Router
         // for better performance
        	
 		  // initializing Controller Class
-
+        var_dump($extension);
        	if (!empty($extension) && in_array($extension, self::$_routes)) {
        		if (!empty($urlExp[2])) {
        			$controller = $urlExp[2];
@@ -110,7 +109,7 @@ class Router
 
 
 
-        //self::getExtensions();
+        // self::getExtensions();
     }
 	
 	private static function loadCore()
