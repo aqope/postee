@@ -104,11 +104,6 @@ class Router
           // Handle for 404 existing route
         }
      	
-
-       
-
-
-
         // self::getExtensions();
     }
 	

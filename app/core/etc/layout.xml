@@ -1,0 +1,9 @@
+<?xml version='1.0' ?>
+<layout>
+	<default>
+		<block name='header_includes'/>
+	</default>
+	<core_index_index>
+
+	</core_index_index>
+</layout>

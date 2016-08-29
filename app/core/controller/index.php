@@ -7,15 +7,12 @@
 
 class Core_Controller_Index
 {
-
 	public function __construct()
 	{
-		
-		if (file_exists(__DIR__ . "/../block/abstract.php"))
-		{
-			include_once(__DIR__ . "/../block/abstract.php");
-			new Core_Block_Abstract();
-		}
+		var_dump('y');
+		var_dump(class_exists(Core_Block_Abstract));
+		$block = new Core_Block_Header_Includes();
+		$block->renderLayout();
 	}
 
 	public function indexAction()

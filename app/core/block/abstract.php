@@ -10,31 +10,14 @@ class Core_Block_Abstract
 
 	public function __construct()
 	{
-		// It is not recommended to call abstract construct elsewhere
-		$callClass = get_class($this);
-		$callClass = substr($callClass, strpos($callClass, 'Block_') + 6);
-		$callClass = explode("_", $callClass);
-		foreach($callClass as $key => $value) {
-			$callClass[$key] = lcfirst($value);
-		}
-		$callClass = implode("_", $callClass);
-		var_dump($callClass);
-		$xml = new Core_Utils_Xml();
-		$this->blocks_enumurated = $xml->open(realpath(__DIR__ . '/blocks.xml'));
-		var_dump($this->blocks_enumurated->$callClass);
-		var_dump($this->blocks_enumurated);
-		$this->block_class = $callClass;
-		if (!empty($this->blocks_enumurated)) {
-			$packageTheme = $this->blocks_enumurated->package;
-			$basePage = $this->blocks_enumurated->base;	
-			$this->block_base_path = Router::$_template_path . "/" . $packageTheme . "/";
-			$this->package = $packageTheme;
-			include_once($this->block_base_path . $basePage . ".phtml");
-			
-		}
-
+		// let it be dummy for now	
 	}
 
+
+	/*
+	 * This functions is only called from template file, otherwise
+	 * it may cause instability
+	 */
 	public function renderBlock($_block_name)
 	{
 		$blockClass = $this->block_class;
@@ -64,5 +47,38 @@ class Core_Block_Abstract
 				break;
 			}
 		}
-	}	
+	}
+	public function dummy()
+	{
+		var_dump('dummy');
+	}
+
+	public function renderLayout()
+	{
+		$callClass = get_class($this);
+		$callClass = substr($callClass, strpos($callClass, 'Block_') + 6);
+		$callClass = explode("_", $callClass);
+		foreach($callClass as $key => $value) {
+			$callClass[$key] = lcfirst($value);
+		}
+		$callClass = implode("_", $callClass);
+		var_dump($callClass);
+		$xml = new Core_Utils_Xml();
+		$this->blocks_enumurated = $xml->open(realpath(__DIR__ . '/blocks.xml'));
+		var_dump($this->blocks_enumurated->$callClass);
+		var_dump($this->blocks_enumurated);
+		$this->block_class = $callClass;
+		if (!empty($this->blocks_enumurated)) {
+			$packageTheme = $this->blocks_enumurated->package;
+			$basePage = $this->blocks_enumurated->base;	
+			$this->block_base_path = Router::$_template_path . "/" . $packageTheme . "/";
+			$this->package = $packageTheme;
+			include_once($this->block_base_path . $basePage . ".phtml");
+		}
+	}
+
+	public function getLayout()
+	{
+		
+	}
 }
