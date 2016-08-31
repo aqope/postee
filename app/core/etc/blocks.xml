@@ -1,8 +1,11 @@
 <?xml version="1.0" ?>
-<blocks>
-	<package>default</package>
-	<base>page/page</base>
-	<abstract>
+
+<global>
+	<config>
+		<package>default</package>
+		<base>page/page</base>
+	</config>
+	<blocks>
 		<block>
 			<name>header</name>
 			<template>page/header</template>
@@ -13,5 +16,5 @@
 			<template>page/header/includes.phtml</template>
 			<class>Core_Block_Header_Includes</class>
 		</block>
-	</abstract>
-</blocks>
+	</blocks>	
+</global>
