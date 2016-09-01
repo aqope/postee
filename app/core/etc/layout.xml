@@ -1,9 +1,10 @@
 <?xml version='1.0' ?>
 <layout>
 	<default>
+		<block name='abstract'/>
 		<block name='header_includes'/>
 	</default>
 	<core_index_index>
-
+		<block name='header_includes'/>
 	</core_index_index>
 </layout>

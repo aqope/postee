@@ -7,6 +7,8 @@
 class Core_Core 
 {	
 	public static $_path;
+	public static $_config_path;
+	public static $_layout;
 	/*
 	 * Loads Package extensions
 	 */
@@ -14,15 +16,16 @@ class Core_Core
 	public function __construct()
 	{
 		self::$_path = realpath('app/core');
+		self::$_config_path = realpath('app/core/etc');
 		// Loading main functionality scripts
 		// This may be improved
 		include_once(__DIR__ . "/utils/xml.php");
 		include_once(__DIR__ . "/extension/extension.php");
 		include_once(__DIR__ . "/extension/layout/autoload.php");
-
+		include_once(__DIR__ . "/extension/layout.php");
+		self::$_layout = new Core_Extension_Layout();
 		if (file_exists(__DIR__ . "/block/abstract.php"))
 		{
-			var_dump(__DIR__);
 			include_once(__DIR__ . "/block/abstract.php");
 			new Core_Block_Abstract();
 		}

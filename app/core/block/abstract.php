@@ -7,6 +7,8 @@ class Core_Block_Abstract
 	public $blocks_enumurated;
 	public $block_class;
 	public $package;
+	public $blocks;
+	public $layout;
 
 	public function __construct()
 	{
@@ -20,8 +22,9 @@ class Core_Block_Abstract
 	 */
 	public function renderBlock($_block_name)
 	{
-		$blockClass = $this->block_class;
-		foreach($this->blocks_enumurated->$blockClass->block as $block) {			
+		foreach(Core_Core::$_layout->getBlockEnum()->block as $block) {
+			var_dump($block);
+			var_dump($_block_name);
 			if ($block->name == $_block_name) {
 				if ($block->class && (string)$block->class != "") {
 					// using specified class
@@ -39,7 +42,8 @@ class Core_Block_Abstract
 					}
 
 				} else {
-					// use Core_Block_Abstract					
+					// use Core_Block_Abstract
+					var_dump($this->block_base_path . $block->template . ".phtml");
 					if (file_exists($this->block_base_path . $block->template . ".phtml")) {
 						include_once($this->block_base_path . $block->template . ".phtml");	
 					}
@@ -55,22 +59,9 @@ class Core_Block_Abstract
 
 	public function renderLayout()
 	{
-		$callClass = get_class($this);
-		$callClass = substr($callClass, strpos($callClass, 'Block_') + 6);
-		$callClass = explode("_", $callClass);
-		foreach($callClass as $key => $value) {
-			$callClass[$key] = lcfirst($value);
-		}
-		$callClass = implode("_", $callClass);
-		var_dump($callClass);
-		$xml = new Core_Utils_Xml();
-		$this->blocks_enumurated = $xml->open(realpath(__DIR__ . '/blocks.xml'));
-		var_dump($this->blocks_enumurated->$callClass);
-		var_dump($this->blocks_enumurated);
-		$this->block_class = $callClass;
-		if (!empty($this->blocks_enumurated)) {
-			$packageTheme = $this->blocks_enumurated->package;
-			$basePage = $this->blocks_enumurated->base;	
+		if (!empty($this->layout)) {			
+			$packageTheme = Core_Core::$_layout->getConfigPackage();
+			$basePage = Core_Core::$_layout->getConfigBase();
 			$this->block_base_path = Router::$_template_path . "/" . $packageTheme . "/";
 			$this->package = $packageTheme;
 			include_once($this->block_base_path . $basePage . ".phtml");
@@ -79,6 +70,12 @@ class Core_Block_Abstract
 
 	public function getLayout()
 	{
-		
+		$blocksXMLPath = Core_Core::$_config_path . '/layout.xml';
+		if ($blocksXMLPath) {
+			$xml = new Core_Utils_Xml();
+			$layout = $xml->open($blocksXMLPath);
+			$handle = Router::$_route_link;
+			$this->layout = $layout->$handle->block;
+		}
 	}
 }

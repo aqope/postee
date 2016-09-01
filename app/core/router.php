@@ -10,9 +10,10 @@ class Router
 {
 	public static $_routes;
 	public static $_basePath;
-  public static $_root_path;
-  public static $_template_path;
-
+	public static $_root_path;
+	public static $_template_path;
+	public static $_route_link;
+	
     public static function start()
     {
 		// Setting Global Variables
@@ -20,8 +21,7 @@ class Router
       self::$_root_path = realpath("");
       self::$_template_path = realpath("template/");
     	self::$_routes = array();
-    	self::loadCore();
-        $url = $_SERVER['REQUEST_URI'];
+    	$url = $_SERVER['REQUEST_URI'];
         $url = substr($url, strpos($url, "index.php"));
         $url = substr($url, strlen("index.php"));
         $urlExp = explode("/", $url);
@@ -89,20 +89,29 @@ class Router
        		$actionClass = implode("_", $actionMethod);
        		
        		if (class_exists($actionClass)) {
-       		$class = new $actionClass();
+
+       		
 	       		if (!empty($action)) {
 	       			$method = $action . "Action";	
 	       		} else {
+					$action = "index";
 	       			$method = "indexAction";
 	       		}
+	       		self::$_route_link = $extension . '_' . $controller . '_' . $action;
 	       		
-	       		if (method_exists($class, $method)) {
-	       			$class->$method();
-	       		}
        		}	
        	} else {
           // Handle for 404 existing route
         }
+		
+		self::loadCore();
+		if (class_exists($actionClass)) {
+			$class = new $actionClass();
+			if (method_exists($class, $method)) {
+	       			$class->$method();
+	       		}
+		}
+        
      	
         // self::getExtensions();
     }

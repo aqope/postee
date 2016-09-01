@@ -7,13 +7,17 @@
 	</config>
 	<blocks>
 		<block>
+			<name>abstract</name>
+			<class>Core_Block_Abstract</class>
+		</block>
+		<block>
 			<name>header</name>
 			<template>page/header</template>
 			<class></class>
 		</block>
 		<block>
 			<name>header_includes</name>
-			<template>page/header/includes.phtml</template>
+			<template>page/header/includes</template>
 			<class>Core_Block_Header_Includes</class>
 		</block>
 	</blocks>	

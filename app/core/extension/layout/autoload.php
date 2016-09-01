@@ -19,8 +19,14 @@ class Core_Extension_Layout_Autoload  {
 		if (file_exists($blockPath)) {
 			
 			$xml = new Core_Utils_Xml();
-			$this->_blocksXML = $xml->open($blockPath)
-									->blocks;
+			$xmlBlocks = $xml->open($blockPath);
+			Core_Core::$_layout->setConfig(
+				$xmlBlocks->config->base,
+				$xmlBlocks->config->package
+			);
+			$this->_blocksXML = $xmlBlocks->blocks;
+									
+			Core_Core::$_layout->setBlockEnum($this->_blocksXML);
 			var_dump($this->_blocksXML);
 		}
 		
@@ -31,7 +37,12 @@ class Core_Extension_Layout_Autoload  {
 			$layouts = $xml->open($layoutPath);
 			foreach($layouts->default->block as $block) {
 				$this->includeBlock($block['name']);
-			}			
+			}
+			$routeLink = Router::$_route_link;
+			foreach($layouts->$routeLink->block as $block) {
+				$this->includeBlock($block['name']);
+			}
+			
 		}
 	}
 	
@@ -42,9 +53,9 @@ class Core_Extension_Layout_Autoload  {
 	public function includeBlock($_name)
 	{
 		$blockPath = $this->searchInBlocks($_name);
-		var_dump($blockPath);
+
 		if ($blockPath) {
-			
+			var_dump(Router::$_basePath . $blockPath);
 			include_once(Router::$_basePath . $blockPath);
 		}
 	}

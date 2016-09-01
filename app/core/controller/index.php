@@ -9,9 +9,8 @@ class Core_Controller_Index
 {
 	public function __construct()
 	{
-		var_dump('y');
-		var_dump(class_exists(Core_Block_Abstract));
-		$block = new Core_Block_Header_Includes();
+		$block = new Core_Block_Abstract();
+		$block->getLayout();
 		$block->renderLayout();
 	}
 
