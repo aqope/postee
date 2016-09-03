@@ -37,7 +37,6 @@ class Router
         // for better performance
        	
 		  // initializing Controller Class
-        var_dump($extension);
        	if (!empty($extension) && in_array($extension, self::$_routes)) {
        		if (!empty($urlExp[2])) {
        			$controller = $urlExp[2];

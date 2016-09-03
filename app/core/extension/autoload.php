@@ -8,7 +8,7 @@ class Core_Extension_Layout_Autoload  {
 			$xml = new Core_Utils_Xml();
 			$layouts = $xml->open($layoutPath);
 			foreach($layouts['default'] as $block) {
-				var_dump($block->getName());
+
 			}
 			
 		}

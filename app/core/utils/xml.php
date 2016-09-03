@@ -23,7 +23,6 @@ class Core_Utils_Xml
 		}
 		
         if (file_exists($this->path)) {
-        	var_dump($this->path);
 			return simplexml_load_file($this->path);
         } else {
 			return false;

@@ -54,7 +54,7 @@ class Core_Extension_Layout
 		$blockPath = $this->searchInBlocks($_name);
 
 		if ($blockPath) {
-			var_dump(Router::$_basePath . $blockPath);
+
 			include_once(Router::$_basePath . $blockPath);
 		}
 	}
@@ -71,7 +71,6 @@ class Core_Extension_Layout
 			foreach($this->_blockEnum->block as $block) {
 				if ((string)$block->name == $_name && (string)$block->class != '') {
 					$fullPath = (string)$block->class;
-					var_dump($fullPath);
 					break;
 				}
 			}

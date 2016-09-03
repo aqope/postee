@@ -13,6 +13,6 @@
  {
 	 public function __construct()
 	 {
-		var_dump('This package has loaded correctly!');
+
 	 }
  }

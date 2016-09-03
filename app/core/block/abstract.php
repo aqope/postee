@@ -23,8 +23,6 @@ class Core_Block_Abstract
 	public function renderBlock($_block_name)
 	{
 		foreach(Core_Core::$_layout->getBlockEnum()->block as $block) {
-			var_dump($block);
-			var_dump($_block_name);
 			if ($block->name == $_block_name) {
 				if ($block->class && (string)$block->class != "") {
 					// using specified class
@@ -34,7 +32,6 @@ class Core_Block_Abstract
 					}
 
 					$blockPaths = implode("/", $blockPaths) . ".php";
-					var_dump($blockPaths);
 					if (file_exists(Router::$_basePath . "/" . $blockPaths)) {
 						include_once(Router::$_basePath . "/" . $blockPaths);
 						$class = (string)$block->class;
@@ -43,7 +40,6 @@ class Core_Block_Abstract
 
 				} else {
 					// use Core_Block_Abstract
-					var_dump($this->block_base_path . $block->template . ".phtml");
 					if (file_exists($this->block_base_path . $block->template . ".phtml")) {
 						include_once($this->block_base_path . $block->template . ".phtml");	
 					}
@@ -54,7 +50,7 @@ class Core_Block_Abstract
 	}
 	public function dummy()
 	{
-		var_dump('dummy');
+
 	}
 
 	public function renderLayout()

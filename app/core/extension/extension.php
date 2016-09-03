@@ -34,7 +34,7 @@
 	 {
 		 if($_path) {
 			 $fullPath = Router::$_basePath . "/" .$_path . ".php";
-			 var_dump($fullPath);
+
 			 if (file_exists($fullPath)) {
 				include_once($fullPath);
 				

@@ -17,11 +17,10 @@ class Core_Controller_Index
 	public function indexAction()
 	{
 
-		var_dump("Default Index Action");
 	}
 
 	public function editAction() 
 	{
-		var_dump("Not Implemented Yet");
+
 	}
 }

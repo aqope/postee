@@ -1,14 +1,21 @@
 <html>
 	<head>
-		<!-- Includes will be added later -->
+        <?php echo $this->renderBlock('header_includes'); ?>
 	</head>
 
 	<body>
 		<div class="wrapper">
+			<div class="header">
+                <?php echo $this->renderBlock('header');?>
+            </div>
+            <div class="body">
+
+            </div>
+            <div class="footer">
+
+            </div>
 			<h1>Hello World!</h1>
-			<?php echo get_class($this); ?>
-			<h2><?php echo $this->renderBlock('header');?></h2>
-			<?php $this->renderBlock('header_includes'); ?>
+			<h2></h2>
 		</div>
 	</body>
 </html>

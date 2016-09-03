@@ -10,6 +10,6 @@ class Version_Controller_Show
 {
 	public function indexAction() 
 	{
-		var_dump('1.0');
+
 	}
 }

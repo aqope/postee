@@ -27,7 +27,7 @@ class Core_Extension_Layout_Autoload  {
 			$this->_blocksXML = $xmlBlocks->blocks;
 									
 			Core_Core::$_layout->setBlockEnum($this->_blocksXML);
-			var_dump($this->_blocksXML);
+
 		}
 		
 		// Layout processing entry <defualt>
@@ -55,7 +55,7 @@ class Core_Extension_Layout_Autoload  {
 		$blockPath = $this->searchInBlocks($_name);
 
 		if ($blockPath) {
-			var_dump(Router::$_basePath . $blockPath);
+
 			include_once(Router::$_basePath . $blockPath);
 		}
 	}
@@ -72,7 +72,7 @@ class Core_Extension_Layout_Autoload  {
 			foreach($this->_blocksXML->block as $block) {
 				if ((string)$block->name == $_name && (string)$block->class != '') {
 					$fullPath = (string)$block->class;
-					var_dump($fullPath);
+
 					break;
 				}
 			}
