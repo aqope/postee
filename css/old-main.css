@@ -109,7 +109,7 @@ padding: 0px;
 
 }
 button.icon.login {
-background-image: url("../images/unlock.svg");
+background-image: url("../oldversion/images/unlock.svg");
 margin-left: 6px;
 }
 button.icon.text {
@@ -123,19 +123,19 @@ font-weight: 800;
 
 }
 button.icon.view_more {
-background-image: url("../images/open.svg");
+background-image: url("../oldversion/images/open.svg");
 /*width: 24px;*/
 height:24px;
 }
 button.icon.submit {
 display: block;
 padding-left: 0px;
-background-image: url("../images/check.svg");
+background-image: url("../oldversion/images/check.svg");
 }
 button.icon.register {
 margin-top: 15px;
 margin-bottom: 5px;
 background-size: 20px;
 padding-left: 0px;
-background-image: url("../images/head.svg");
+background-image: url("../oldversion/images/head.svg");
 }

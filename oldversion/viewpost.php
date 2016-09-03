@@ -6,7 +6,7 @@ $post = getPostById($_GET['id']);
 <html>
 <head>
 	<title>Simple Blog</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 
 </head>
 <body>
@@ -26,7 +26,7 @@ while(!($pre > $pos)) {
 echo "<p> " . substr($content, $pre) . "</p>";
 echo "<hr>";
 echo "</div>";
-echo "<a href='index.php'><button>Go Back</button></a>";
+echo "<a href='../index.php'><button>Go Back</button></a>";
 ?>
 </body>
 </html>

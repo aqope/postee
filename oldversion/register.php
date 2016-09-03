@@ -6,7 +6,7 @@ include 'class/database.php';
 <html>
 <head>
 	<title>Simple Blog</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
 <div class="page-wrapper">
