@@ -2,6 +2,7 @@
 
 class Core_Block_Abstract
 {
+    public $_template;
 	public $block_template_path;
 	public $block_base_path;
 	public $blocks_enumurated;
@@ -38,7 +39,7 @@ class Core_Block_Abstract
                         if (file_exists(Router::$_basePath . "/" . $blockPaths)) {
                             include_once(Router::$_basePath . "/" . $blockPaths);
                             $class = (string)$block->class;
-                            new $class();
+                            new $class($this->block_base_path . $block->template . ".phtml");
                         }
 
                     } else {
@@ -81,8 +82,10 @@ class Core_Block_Abstract
 		}
 	}
 
-	public function getBlock()
+	protected function toHtml()
     {
-
+        if ($this->_template) {
+            include_once($this->_template);
+        }
     }
 }

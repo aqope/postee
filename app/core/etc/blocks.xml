@@ -18,6 +18,7 @@
 		<block>
 			<name>header_includes</name>
 			<template>page/header/includes</template>
+			<class>Core_Block_Header_Includes</class>
 		</block>
 		<block>
 			<name>posts</name>
