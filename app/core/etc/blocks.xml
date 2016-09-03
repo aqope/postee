@@ -28,5 +28,10 @@
 			<name>footer</name>
 			<template>page/footer</template>
 		</block>
-	</blocks>	
+		<block>
+			<name>version</name>
+			<template>page/version</template>
+			<class>Version_Block_Version</class>
+		</block>
+	</blocks>
 </global>
