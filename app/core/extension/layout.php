@@ -87,4 +87,15 @@ class Core_Extension_Layout
 			return false;
 		}
 	}
+
+	public function containsInLayout($_name, $_layoutHandle)
+    {
+        foreach ($_layoutHandle as $block) {
+            if ($block['name'] == $_name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

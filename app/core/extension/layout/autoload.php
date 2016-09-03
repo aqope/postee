@@ -5,7 +5,10 @@
  * class: extension_layout_autoload
  */
 class Core_Extension_Layout_Autoload  {
-	
+    /**
+     * Hold blocks loaded from /etc/blocks.xml
+     * @var SimpleXMLElement[]
+     */
 	private $_blocksXML;
 	
 	/**
@@ -39,10 +42,12 @@ class Core_Extension_Layout_Autoload  {
 				$this->includeBlock($block['name']);
 			}
 			$routeLink = Router::$_route_link;
-			foreach($layouts->$routeLink->block as $block) {
-				$this->includeBlock($block['name']);
-			}
-			
+
+            if ($layouts->$routeLink->block) {
+                foreach ($layouts->$routeLink->block as $block) {
+                    $this->includeBlock($block['name']);
+                }
+            }
 		}
 	}
 	
@@ -55,7 +60,6 @@ class Core_Extension_Layout_Autoload  {
 		$blockPath = $this->searchInBlocks($_name);
 
 		if ($blockPath) {
-
 			include_once(Router::$_basePath . $blockPath);
 		}
 	}

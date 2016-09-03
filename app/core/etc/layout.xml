@@ -3,8 +3,10 @@
 	<default>
 		<block name='abstract'/>
 		<block name='header_includes'/>
+		<block name='header'/>
 	</default>
 	<core_index_index>
-		<block name='header_includes'/>
+
+
 	</core_index_index>
 </layout>
