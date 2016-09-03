@@ -4,9 +4,10 @@
 		<block name='abstract'/>
 		<block name='header_includes'/>
 		<block name='header'/>
-
+		<block name="footer"/>
 	</default>
 	<core_index_index>
-		<block name='version'/>
+		<block name='posts'/>
+
 	</core_index_index>
 </layout>
