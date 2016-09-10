@@ -12,11 +12,10 @@
 	 /*
 	  * Loads Packages from config.xml
 	  */
-
 	 public function __construct()
 	 {
 		$xml = new Core_Utils_Xml($this->_configPath);
-		$configArray = $xml->open();
+		$configArray = $xml->open()->extensions;
 		
 		foreach ($configArray as $item) {
 			if ($item->active) {
