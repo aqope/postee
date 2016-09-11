@@ -1,5 +1,9 @@
 <?php
 /*
+ * author: Artur Paklin
+ * package: core
+ * Class: utils_xml
+ *
  * Uses native SimpleXML functionality
  */
 class Core_Utils_Xml

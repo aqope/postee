@@ -1,7 +1,15 @@
 <?xml version="1.0" ?>
-<extensions>
-    <version>
-        <path>version/version</path>
-        <active>true</active>
-    </version>
-</extensions>
+<config>
+    <database>
+        <server>localhost</server>
+        <user>root</user>
+        <password></password>
+        <db>postee-db</db>
+    </database>
+    <extensions>
+        <version>
+            <path>version/version</path>
+            <active>true</active>
+        </version>
+    </extensions>
+</config>

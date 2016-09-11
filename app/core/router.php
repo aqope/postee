@@ -3,7 +3,7 @@
 /*
  * author: Artur Paklin
  * package: core
- * class: Router
+ * class: router
  */
 
 class Router 
