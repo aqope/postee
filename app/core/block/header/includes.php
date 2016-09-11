@@ -6,7 +6,6 @@ class Core_Block_Header_Includes extends Core_Block_Abstract
 
 	public function __construct($_template)
 	{
-	    $model = Core_Core::getModel('core/posts');
 	    $this->_template = $_template;
 		$this->toHtml();
 	}

@@ -3,7 +3,7 @@
 /*
  * author: Artur Paklin
  * package: core
- * Class: Core_Utils_Sql
+ * Class: utils_sql
  *
  * Native SQL functionality
  */

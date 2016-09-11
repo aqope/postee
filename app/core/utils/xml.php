@@ -2,7 +2,7 @@
 /*
  * author: Artur Paklin
  * package: core
- * Class: Core_Utils_Xml
+ * Class: utils_xml
  *
  * Uses native SimpleXML functionality
  */

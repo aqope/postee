@@ -23,6 +23,7 @@
 		<block>
 			<name>posts</name>
 			<template>page/posts</template>
+			<class>Core_Block_Posts</class>
 		</block>
 		<block>
 			<name>footer</name>

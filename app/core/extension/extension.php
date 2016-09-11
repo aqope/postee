@@ -1,10 +1,10 @@
 <?php
+
 /*
  * author: Artur Paklin
  * package: core
  * class: extension_extension
  */
-
  class Core_Extension_Extension
  {
 	 private $_configPath = "../../config/config.xml";
