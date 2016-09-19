@@ -90,9 +90,11 @@ class Core_Extension_Layout
 
 	public function containsInLayout($_name, $_layoutHandle)
     {
-        foreach ($_layoutHandle as $block) {
-            if ($block['name'] == $_name) {
-                return true;
+        if (!empty($_layoutHandle)) {
+            foreach ($_layoutHandle as $block) {
+                if ($block['name'] == $_name) {
+                    return true;
+                }
             }
         }
 
