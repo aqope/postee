@@ -28,7 +28,6 @@ class Router
 
         /* Fix for Core Routes */
 
-        array_push(self::$_routes, 'core');
 
         if ( strlen(implode("", $urlExp))  > 1) {
 
@@ -41,7 +40,7 @@ class Router
         // for better performance
        	
 		  // initializing Controller Class
-       	if (!empty($extension) && in_array($extension, self::$_routes)) {
+       	if (!empty($extension)) {
        		if (!empty($urlExp[2])) {
        			$controller = $urlExp[2];
        		} else {

@@ -82,6 +82,18 @@ class Core_Block_Abstract
 		}
 	}
 
+	public function getContent()
+    {
+        $contentPage = Core_Core::$_layout->getConfigContent();
+        if ($contentPage) {
+            if (file_exists($this->block_base_path . $contentPage . '.phtml')) {
+                include_once($this->block_base_path . $contentPage . '.phtml');
+            }
+        }
+
+        // return nothing;
+    }
+
 	protected function toHtml()
     {
         if ($this->_template) {

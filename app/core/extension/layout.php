@@ -20,11 +20,12 @@ class Core_Extension_Layout
         $this->_blockEnum = $_blockXML;
     }
     
-    public function setConfig($_base, $_package)
+    public function setConfig($_base, $_package, $_content)
     {
         $this->_config = array();
         $this->_config['base'] = $_base;
         $this->_config['package'] = $_package;
+        $this->_config['content'] = $_content;
     }
     
     public function getConfigBase()
@@ -40,6 +41,15 @@ class Core_Extension_Layout
     {
         if (!empty($this->_config['package'])) {
             return $this->_config['package'];
+        } else {
+            return false;
+        }
+    }
+
+    public function getConfigContent()
+    {
+        if (!empty($this->_config['content'])) {
+            return $this->_config['content'];
         } else {
             return false;
         }

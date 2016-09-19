@@ -5,9 +5,10 @@
 		<default>
             <package>default</package>
             <base>page/page</base>
+            <content>page/home</content>
 		</default>
         <core_index_index>
-            <base>page/base</base>
+            <content>posts/posts</content>
         </core_index_index>
 	</config>
 	<blocks>

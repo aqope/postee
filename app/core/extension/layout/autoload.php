@@ -26,7 +26,8 @@ class Core_Extension_Layout_Autoload  {
 			$xmlBlocks = $xml->open($blockPath);
             $basePage = '';
             $package = '';
-            if (!empty($xmlBlocks->config->$routeLink->base)) {
+            $content = '';
+            if (!empty($xmlBlocks->config->$routeLink)) {
                 if (!empty($xmlBlocks->config->$routeLink->base)) {
                     $basePage = $xmlBlocks->config->$routeLink->base;
                 } else {
@@ -38,13 +39,21 @@ class Core_Extension_Layout_Autoload  {
                 } else {
                     $package = $xmlBlocks->config->default->package;
                 }
+
+                if (!empty($xmlBlocks->config->$routeLink->content)) {
+                    $content = $xmlBlocks->config->$routeLink->content;
+                } else {
+                    $content = $xmlBlocks->config->default->content;
+                }
             } else {
                 $package = $xmlBlocks->config->default->package;
                 $basePage = $xmlBlocks->config->default->base;
+                $content = $xmlBlocks->config->default->content;
             }
 			Core_Core::$_layout->setConfig(
 				$basePage,
-				$package
+				$package,
+                $content
 			);
 			$this->_blocksXML = $xmlBlocks->blocks;
 									
