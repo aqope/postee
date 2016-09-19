@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<global>
+    <config>
+        <default>
+            <package>adminpanel</package>
+            <base>page/main</base>
+            <content>page/login</content>
+        </default>
+    </config>
+    <blocks>
+        <block>
+            <name>admin_abstract</name>
+            <class>Admin_Block_Admin</class>
+        </block>
+    </blocks>
+</global>

@@ -13,6 +13,7 @@ class Router
 	public static $_root_path;
 	public static $_template_path;
 	public static $_route_link;
+    public static $_url_data;
 	
     public static function start()
     {
@@ -70,6 +71,24 @@ class Router
           $controller = "index";
           $action = "index";
        }
+        $urlData = array_splice($urlExp, 4);
+
+        if (count($urlData) >= 2) {
+            self::$_url_data = array();
+            $coin = false;
+            foreach($urlData as $item) {
+                if ($coin == false) {
+                    $key = $item;
+                    $coin = true;
+                } else {
+                    $value = $item;
+                    self::$_url_data[$key] = $value;
+                    $coin = false;
+                }
+            }
+        }
+
+
        	$controllerPath = self::$_basePath;
        	$actionMethod = array();
 

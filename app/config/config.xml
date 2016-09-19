@@ -11,5 +11,9 @@
             <path>version/version</path>
             <active>true</active>
         </version>
+        <admin>
+            <path>admin/admin</path>
+            <active>true</active>
+        </admin>
     </extensions>
 </config>
