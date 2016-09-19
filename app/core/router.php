@@ -44,18 +44,26 @@ class Router
        	if (!empty($extension) && in_array($extension, self::$_routes)) {
        		if (!empty($urlExp[2])) {
        			$controller = $urlExp[2];
-       		}
+       		} else {
+                $controller = "index";
+            }
        		if (!empty($urlExp[3])) {
        			$action = $urlExp[3];	
-       		}
+       		} else {
+       		    $action = "index";
+            }
        	} else {
        		// default functionality built in into Core
        		if (!empty($urlExp[1])) {
        			$controller = $urlExp[1];
-       		}
+       		} else {
+                $controller = "index";
+            }
        		if (!empty($urlExp[2])) {
        			$action = $urlExp[2];	
-       		}
+       		} else {
+       		    $action = "index";
+            }
        	}
        } else {             
           // Default Index Action in Index Controller
@@ -66,7 +74,7 @@ class Router
        	$controllerPath = self::$_basePath;
        	$actionMethod = array();
 
-       	if (!empty($extension) && $extension != $controller) {
+       	if ( (!empty($controller) && !empty($extension)) && $extension != $controller) {
        		$controllerPath .= "/" . $extension;
        		array_push($actionMethod, ucfirst($extension));
        		array_push($actionMethod, ucfirst("controller"));
@@ -100,13 +108,24 @@ class Router
 					$action = "index";
 	       			$method = "indexAction";
 	       		}
-	       		self::$_route_link = $extension . '_' . $controller . '_' . $action;
-	       		
        		}
        	} else {
           // Handle for 404 existing route
         }
-		
+
+        if ($extension) {
+            self::$_route_link = $extension;
+
+            if ($controller) {
+                self::$_route_link .= '_' . $controller;
+                if ($action) {
+                    self::$_route_link .= '_' . $action;
+                } else {
+                    self::$_route_link .= '_index';
+                }
+            }
+        }
+
 		self::loadCore();
 		if (!empty($actionClass) && class_exists($actionClass)) {
 			$class = new $actionClass();

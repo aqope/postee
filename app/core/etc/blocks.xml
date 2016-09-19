@@ -2,8 +2,13 @@
 
 <global>
 	<config>
-		<package>default</package>
-		<base>page/page</base>
+		<default>
+            <package>default</package>
+            <base>page/page</base>
+		</default>
+        <core_index_index>
+            <base>page/base</base>
+        </core_index_index>
 	</config>
 	<blocks>
 		<block>

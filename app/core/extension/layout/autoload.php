@@ -19,13 +19,32 @@ class Core_Extension_Layout_Autoload  {
 	{
 		// Blocks including part
 		$blockPath = Core_Core::$_path . '/etc/blocks.xml';
+        $routeLink = Router::$_route_link;
+
 		if (file_exists($blockPath)) {
-			
 			$xml = new Core_Utils_Xml();
 			$xmlBlocks = $xml->open($blockPath);
+            $basePage = '';
+            $package = '';
+            if (!empty($xmlBlocks->config->$routeLink->base)) {
+                if (!empty($xmlBlocks->config->$routeLink->base)) {
+                    $basePage = $xmlBlocks->config->$routeLink->base;
+                } else {
+                    $basePage = $xmlBlocks->config->default->base;
+                }
+
+                if (!empty($xmlBlocks->config->$routeLink->package)) {
+                    $package = $xmlBlocks->config->$routeLink->package;
+                } else {
+                    $package = $xmlBlocks->config->default->package;
+                }
+            } else {
+                $package = $xmlBlocks->config->default->package;
+                $basePage = $xmlBlocks->config->default->base;
+            }
 			Core_Core::$_layout->setConfig(
-				$xmlBlocks->config->base,
-				$xmlBlocks->config->package
+				$basePage,
+				$package
 			);
 			$this->_blocksXML = $xmlBlocks->blocks;
 									
@@ -41,7 +60,7 @@ class Core_Extension_Layout_Autoload  {
 			foreach($layouts->default->block as $block) {
 				$this->includeBlock($block['name']);
 			}
-			$routeLink = Router::$_route_link;
+
 
             if ($layouts->$routeLink->block) {
                 foreach ($layouts->$routeLink->block as $block) {
