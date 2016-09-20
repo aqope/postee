@@ -38,7 +38,7 @@ class Core_Core
 		$this->layoutAutoload();
 	}
 	
-	/*
+	/**
 	 * Executes constructor which loads extensions
 	 */
 
@@ -93,7 +93,6 @@ class Core_Core
                 } catch (Exception $ex) {
                     var_dump($ex->getMessage());
                 }
-
 
             }
         } catch (Exception $ex) {

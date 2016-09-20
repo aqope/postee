@@ -1,0 +1,25 @@
+<?xml version='1.0' ?>
+<layout>
+    <config>
+        <package>default</package>
+        <base>page/page</base>
+        <content>page/page</content>
+    </config>
+    <blocks>
+        <default>
+            <content template="page/page"/>
+            <block class="Core_Block_Abstract" name='abstract'/>
+            <block class="Core_Block_Header_Includes" name='header_includes'/>
+            <block name='header' template="page/header/header.phtml"/>
+            <block name="footer"/>
+        </default>
+        <core_index_index>
+            <!--<config>-->
+                <!--<package>diff</package>-->
+                <!--<base>diff/page</base>-->
+                <!--<content>diff/main</content>-->
+            <!--</config>-->
+            <block name="abstract"/>
+        </core_index_index>
+    </blocks>
+</layout>
