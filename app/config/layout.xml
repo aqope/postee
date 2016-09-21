@@ -14,6 +14,10 @@
             <block name="footer" template="page/footer.phtml"/>
         </default>
         <admin>
+            <config>
+                <package>adminpanel</package>
+                <base>main</base>
+            </config>
             <block class="Admin_Block_Admin" name="admin_block"/>
         </admin>
         <core_index_index>
@@ -25,8 +29,8 @@
             <!--</config>-->
             <block name="abstract"/>
         </core_index_index>
-        <admin_index_index>
-
-        </admin_index_index>
+        <admin_index_login>
+            <block name="login.form" template="login.form.phtml"/>
+        </admin_index_login>
     </blocks>
 </layout>

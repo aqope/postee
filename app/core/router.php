@@ -143,7 +143,6 @@ class Router
                 }
             }
         }
-
 		self::loadCore();
 		if (!empty($actionClass) && class_exists($actionClass)) {
 			$class = new $actionClass();
@@ -151,6 +150,7 @@ class Router
 	       			$class->$method();
             }
 		}
+		var_dump(self::$_route_link);
 
      	
         // self::getExtensions();

@@ -21,4 +21,5 @@ class Core_Controller_Index
 	public function editAction() 
 	{
 	}
+
 }

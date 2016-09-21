@@ -13,4 +13,17 @@ class Admin_Controller_Index
     {
         var_dump('h');
     }
+
+    public function authorizeAction()
+    {
+        $username = $_POST['user'];
+        $pass = $_POST['pass'];
+
+        $session = Core_Core::getModel('admin/session');
+        $session->isLogged($username);
+
+
+        var_dump($username);
+        var_dump($pass);
+    }
 }

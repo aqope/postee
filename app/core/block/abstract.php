@@ -67,11 +67,11 @@ class Core_Block_Abstract
 
             if (file_exists($this->block_base_path . $basePage . ".phtml")) {
                 include_once($this->block_base_path . $basePage . ".phtml");
-            } elseif (file_exists($this->block_base_path . $this->layout->getDefaultConfigBase . ".phtml")) {
+            } elseif (file_exists($this->block_base_path . $this->layout->getDefaultConfigBase() . ".phtml")) {
                 include_once($this->block_base_path . $this->layout->getDefaultConfigBase() . ".phtml");
             } else {
                 $this->block_base_path = Router::$_template_path . "/" . $this->layout->getDefaultConfigPackage() . "/";
-                include_once($this->block_base_path . $this->layout->getDefaultConfigBase . ".phtml");
+                include_once($this->block_base_path . $this->layout->getDefaultConfigBase() . ".phtml");
             }
 
 		}
