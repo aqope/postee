@@ -149,8 +149,9 @@ class Router
 			$class = new $actionClass();
 			if (!empty($method) && method_exists($class, $method)) {
 	       			$class->$method();
-	       		}
+            }
 		}
+
      	
         // self::getExtensions();
     }

@@ -55,6 +55,38 @@ class Core_Extension_Layout_Autoload  {
                 }
             }
 
+            $extensionName = explode('_', $routeLink)[0];
+            $routeExtensionDefaults = $xmlBlocks->blocks->$extensionName;
+
+            if (count($routeExtensionDefaults) > 0) {
+                if (!empty($routeExtensionDefaults->config)) {
+                    if (!empty($routeExtensionDefaults->config->base)) {
+                        $configs['base'] = (string)$routeExtensionDefaults->config->base;
+                    }
+
+                    if (!empty($routeExtensionDefaults->config->package)) {
+                        $configs['package'] = (string)$routeExtensionDefaults->config->package;
+                    }
+
+                    if (!empty($routeExtensionDefaults->config->content)) {
+                        $configs['content'] = (string)$routeExtensionDefaults->config->content;
+                    }
+                }
+
+                foreach ($routeExtensionDefaults->block as $block) {
+                    $item = array(
+                        'name' => (string)$block['name'],
+                        'class' => (string)$block['class'],
+                        'template' => (string)$block['template']
+                    );
+
+                    if (array_search((string)$block['name'],
+                            array_column($blockEnum, 'name')) === false ) {
+                        array_push($blockEnum, $item);
+                    }
+                }
+            }
+
             $routeBlocks = $xmlBlocks->blocks->$routeLink;
 
             if (count($routeBlocks) > 0) {

@@ -13,6 +13,9 @@
             <block name="header" template="page/header.phtml"/>
             <block name="footer" template="page/footer.phtml"/>
         </default>
+        <admin>
+            <block class="Admin_Block_Admin" name="admin_block"/>
+        </admin>
         <core_index_index>
             <block name="posts" class="Core_Block_Posts" template="page/posts.phtml"/>
             <!--<config>-->
@@ -22,5 +25,8 @@
             <!--</config>-->
             <block name="abstract"/>
         </core_index_index>
+        <admin_index_index>
+
+        </admin_index_index>
     </blocks>
 </layout>
