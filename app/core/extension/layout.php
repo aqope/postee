@@ -4,6 +4,7 @@ class Core_Extension_Layout
 {
     private $_blockEnum;
     private $_config;
+    private $_defaultConfig;
     
     public function __construct()
     {
@@ -54,6 +55,41 @@ class Core_Extension_Layout
             return false;
         }
     }
+
+    public function setDefaultConfig($_base, $_package, $_content)
+    {
+        $this->_defaultConfig = array();
+        $this->_defaultConfig['base'] = $_base;
+        $this->_defaultConfig['package'] = $_package;
+        $this->_defaultConfig['content'] = $_content;
+    }
+
+    public function getDefaultConfigBase()
+    {
+        if (!empty($this->_defaultConfig['base'])) {
+            return $this->_defaultConfig['base'];
+        } else {
+            return false;
+        }
+    }
+
+    public function getDefaultConfigPackage()
+    {
+        if (!empty($this->_defaultConfig['package'])) {
+            return $this->_defaultConfig['package'];
+        } else {
+            return false;
+        }
+    }
+
+    public function getDefaultConfigContent()
+    {
+        if (!empty($this->_defaultConfig['content'])) {
+            return $this->_defaultConfig['content'];
+        } else {
+            return false;
+        }
+    }
     
     /**
 	 * Includes Block by name
@@ -98,13 +134,11 @@ class Core_Extension_Layout
 		}
 	}
 
-	public function containsInLayout($_name, $_layoutHandle)
+	public function containsInLayout($_name)
     {
-        if (!empty($_layoutHandle)) {
-            foreach ($_layoutHandle as $block) {
-                if ($block['name'] == $_name) {
-                    return true;
-                }
+        foreach ($this->_blockEnum as $block) {
+            if ($block['name'] == $_name) {
+                return true;
             }
         }
 

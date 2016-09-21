@@ -16,11 +16,9 @@ class Core_Controller_Index
 
 	public function indexAction()
 	{
-        echo 'yes';
 	}
 
 	public function editAction() 
 	{
-        echo 'edit';
 	}
 }

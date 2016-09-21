@@ -9,11 +9,12 @@
         <default>
             <content template="page/page"/>
             <block class="Core_Block_Abstract" name='abstract'/>
-            <block class="Core_Block_Header_Includes" name='header_includes'/>
-            <block name='header' template="page/header/header.phtml"/>
-            <block name="footer"/>
+            <block class="Core_Block_Header_Includes" name='header_includes' template="page/header/includes.phtml"/>
+            <block name="header" template="page/header.phtml"/>
+            <block name="footer" template="page/footer.phtml"/>
         </default>
         <core_index_index>
+            <block name="posts" class="Core_Block_Posts" template="page/posts.phtml"/>
             <!--<config>-->
                 <!--<package>diff</package>-->
                 <!--<base>diff/page</base>-->

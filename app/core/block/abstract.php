@@ -24,13 +24,12 @@ class Core_Block_Abstract
 	 */
 	public function renderBlock($_block_name)
 	{
-        if (Core_Core::$_layout->containsInLayout($_block_name, $this->layout)
-            || (Core_Core::$_layout->containsInLayout($_block_name, $this->defaultLayout))) {
-            foreach(Core_Core::$_layout->getBlockEnum()->block as $block) {
-                if ($block->name == $_block_name) {
-                    if ($block->class && (string)$block->class != "") {
+        if (Core_Core::$_layout->containsInLayout($_block_name)) {
+            foreach(Core_Core::$_layout->getBlockEnum() as $block) {
+                if ($block['name'] == $_block_name) {
+                    if ($block['class'] && (string)$block['class'] != "") {
                         // using specified class
-                        $blockPaths = explode("_", $block->class);
+                        $blockPaths = explode("_", $block['class']);
                         foreach ($blockPaths as $key => $value) {
                             $blockPaths[$key] = lcfirst($value);
                         }
@@ -38,14 +37,14 @@ class Core_Block_Abstract
                         $blockPaths = implode("/", $blockPaths) . ".php";
                         if (file_exists(Router::$_basePath . "/" . $blockPaths)) {
                             include_once(Router::$_basePath . "/" . $blockPaths);
-                            $class = (string)$block->class;
-                            new $class($this->block_base_path . $block->template . ".phtml");
+                            $class = (string)$block['class'];
+                            new $class($this->block_base_path . $block['template']);
                         }
 
                     } else {
                         // use Core_Block_Abstract
-                        if (file_exists($this->block_base_path . $block->template . ".phtml")) {
-                            include_once($this->block_base_path . $block->template . ".phtml");
+                        if (file_exists($this->block_base_path . $block['template'])) {
+                            include_once($this->block_base_path . $block['template']);
                         }
                     }
                     break;
@@ -61,25 +60,29 @@ class Core_Block_Abstract
 	public function renderLayout()
 	{
 		if (!empty($this->layout) || !empty($this->defaultLayout)) {
-		    $packageTheme = Core_Core::$_layout->getConfigPackage();
-			$basePage = Core_Core::$_layout->getConfigBase();
+		    $packageTheme = $this->layout->getConfigPackage();
+			$basePage = $this->layout->getConfigBase();
 			$this->block_base_path = Router::$_template_path . "/" . $packageTheme . "/";
 			$this->package = $packageTheme;
 
-			include_once($this->block_base_path . $basePage . ".phtml");
+            if (file_exists($this->block_base_path . $basePage . ".phtml")) {
+                include_once($this->block_base_path . $basePage . ".phtml");
+            } elseif (file_exists($this->block_base_path . $this->layout->getDefaultConfigBase . ".phtml")) {
+                include_once($this->block_base_path . $this->layout->getDefaultConfigBase() . ".phtml");
+            } else {
+                $this->block_base_path = Router::$_template_path . "/" . $this->layout->getDefaultConfigPackage() . "/";
+                include_once($this->block_base_path . $this->layout->getDefaultConfigBase . ".phtml");
+            }
+
 		}
 	}
 
 	public function getLayout()
     {
-		$blocksXMLPath = Core_Core::$_config_path . '/layout.xml';
-		if ($blocksXMLPath) {
-			$xml = new Core_Utils_Xml();
-			$layout = $xml->open($blocksXMLPath);
-			$handle = Router::$_route_link;
-			$this->layout = $layout->$handle->block;
-            $this->defaultLayout = $layout->default->block;
-		}
+        $this->layout = Core_Core::$_layout;
+        $this->blocks = $this->layout->getBlockEnum();
+
+        return $this;
 	}
 
 	public function getContent()

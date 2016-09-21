@@ -32,6 +32,11 @@ class Core_Extension_Layout_Autoload  {
             $configs['package'] = (string)$xmlBlocks->config->package;
             $configs['content'] = (string)$xmlBlocks->config->content;
 
+            Core_Core::$_layout->setDefaultConfig(
+                $configs['base'],
+                $configs['package'],
+                $configs['content']
+            );
             $blockEnum = array();
             $defaultBlocks = $xmlBlocks->blocks->default;
 
@@ -81,6 +86,11 @@ class Core_Extension_Layout_Autoload  {
                 }
             }
             $this->_blocksXML = $blockEnum;
+            Core_Core::$_layout->setConfig(
+                $configs['base'],
+                $configs['package'],
+                $configs['content']
+            );
             Core_Core::$_layout->setBlockEnum($this->_blocksXML);
 
             foreach($this->_blocksXML as $block) {
@@ -88,7 +98,6 @@ class Core_Extension_Layout_Autoload  {
                     $this->includeBlock($block['name']);
                 }
             }
-
         }
     }
 
