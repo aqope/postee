@@ -15,6 +15,7 @@ class Admin_Controller_Index
         $urlModel = Core_Core::getModel('core/url');
         if ($sessionModel->isLogged()) {
             $sessionModel->updateSessionCookie();
+            echo "<h1> YOU ARE LOGGED IN </h1>";
         } else {
             $urlModel->redirect(
                 $urlModel->getBaseUrl() . "admin/index/login/"
@@ -25,7 +26,8 @@ class Admin_Controller_Index
     public function authorizeAction()
     {
         $username = $_POST['user'];
-        $pass = $_POST['pass'];
+        $pass = md5($_POST['pass']);
+
         $urlModel = Core_Core::getModel('core/url');
         $sessionModel = Core_Core::getModel('admin/session');
         $authorized = $sessionModel->isLogged();

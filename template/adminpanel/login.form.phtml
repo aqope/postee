@@ -8,10 +8,11 @@
             </div>
             <div class="password">
                 <span>Password</span>
-                <input name="pass" type="password">
+                <input type="password">
+                <input type="hidden" name="pass">
             </div>
             <div class="actions">
-                <input type="submit" value="Log in">
+                <input href="<?php echo $this->getBaseUrl() . 'admin/index/index'?>" id="submit-form" type="submit" value="Log in">
             </div>
         </div>
     </form>
