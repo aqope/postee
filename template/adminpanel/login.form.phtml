@@ -1,15 +1,18 @@
-<form action="/index.php/admin/index/authorize" method="post">
-    <div class="form-wrapper">
-        <div class="username">
-            <span>Username</span>
-            <input type="text" name="user">
+<div class="login-form-wrapper">
+    <form id='login-form' action="/index.php/admin/index/authorize" method="post">
+        <h1>Log in into Adminpanel</h1>
+        <div class="login-form">
+            <div class="username">
+                <span>Username</span>
+                <input type="text" name="user">
+            </div>
+            <div class="password">
+                <span>Password</span>
+                <input name="pass" type="password">
+            </div>
+            <div class="actions">
+                <input type="submit" value="Log in">
+            </div>
         </div>
-        <div class="password">
-            <span>Password</span>
-            <input name="pass" type="password">
-        </div>
-        <div class="actions">
-            <input type="submit" value="Log in">
-        </div>
-    </div>
-</form>
+    </form>
+</div>

@@ -103,4 +103,16 @@ class Core_Block_Abstract
             include_once($this->_template);
         }
     }
+
+    public function getBaseUrl()
+    {
+        $urlModel = Core_Core::getModel('core/url');
+        return $urlModel->getBaseUrl();
+    }
+
+    public function getAbsoluteUrl()
+    {
+        $urlModel = Core_Core::getModel('core/url');
+        return $urlModel->getAbsoluteBaseUrl();
+    }
 }

@@ -11,19 +11,34 @@ class Admin_Controller_Index
 
     public function indexAction()
     {
-        var_dump('h');
+        $sessionModel = Core_Core::getModel('admin/session');
+        $urlModel = Core_Core::getModel('core/url');
+        if ($sessionModel->isLogged()) {
+            $sessionModel->updateSessionCookie();
+        } else {
+            $urlModel->redirect(
+                $urlModel->getBaseUrl() . "admin/index/login/"
+            );
+        }
     }
 
     public function authorizeAction()
     {
         $username = $_POST['user'];
         $pass = $_POST['pass'];
+        $urlModel = Core_Core::getModel('core/url');
+        $sessionModel = Core_Core::getModel('admin/session');
+        $authorized = $sessionModel->isLogged();
 
-        $session = Core_Core::getModel('admin/session');
-        $session->isLogged($username);
+        if ($authorized == false) {
+            $sessionModel->createSession($username, $pass);
+            $urlModel = Core_Core::getModel('core/url');
+            $urlModel->redirect($urlModel->getBaseUrl() . 'admin/index/index/',
+                array('key' => $sessionModel->getPublicKey()));
+        } else {
+           $urlModel->redirect($urlModel->getBaseUrl() . 'admin/index/index/',
+               array('key' => $sessionModel->getPublicKey()));
 
-
-        var_dump($username);
-        var_dump($pass);
+        }
     }
 }

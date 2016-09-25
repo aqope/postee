@@ -23,6 +23,7 @@ class Core_Core
 		// This may be improved
 		include_once(__DIR__ . "/utils/xml.php");
         include_once(__DIR__ . "/utils/sql.php");
+        include_once(__DIR__ . "/utils/cookie.php");
 		include_once(__DIR__ . "/extension/extension.php");
 		include_once(__DIR__ . "/extension/layout/autoload.php");
 		include_once(__DIR__ . "/extension/layout.php");

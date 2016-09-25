@@ -19,6 +19,7 @@
                 <base>main</base>
             </config>
             <block class="Admin_Block_Admin" name="admin_block"/>
+            <block name="admin_header_includes" template="header.phtml"/>
         </admin>
         <core_index_index>
             <block name="posts" class="Core_Block_Posts" template="page/posts.phtml"/>

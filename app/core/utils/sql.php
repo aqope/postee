@@ -56,6 +56,7 @@ class Core_Utils_Sql
             if ($conn) {
                 $result = $conn->query($sql);
                 $conn->close();
+
                 return $result;
             }
         }

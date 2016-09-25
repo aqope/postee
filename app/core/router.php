@@ -150,7 +150,6 @@ class Router
 	       			$class->$method();
             }
 		}
-		var_dump(self::$_route_link);
 
      	
         // self::getExtensions();
