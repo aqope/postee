@@ -33,5 +33,10 @@
         <admin_index_login>
             <block name="login.form" template="login.form.phtml"/>
         </admin_index_login>
+        <admin_index_index>
+            <config>
+                <base>dash/dash</base>
+            </config>
+        </admin_index_index>
     </blocks>
 </layout>
