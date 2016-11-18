@@ -1,15 +1,19 @@
 <?php
 
-class Core_Model_Url extends Core_Model_Abstract
+class Core_Model_Url extends Core_Model_Config
 {
     protected $_base_url;
     protected $_absolute_base_url;
 
     public function __construct()
     {
-        // TODO: Load base url from database
-        $this->_base_url = 'http://postee.local/index.php/';
-        $this->_absolute_base_url = "http://postee.local/";
+        $this->_table = 'core_config';
+        $col =  $this->getConfigByKey(array("base_url", "absolute_base_url"))
+            ->load()
+            ->getCollection();
+
+        $this->_base_url = $col['base_url'];
+        $this->_absolute_base_url = $col['absolute_base_url'];
     }
 
     public function getBaseUrl()

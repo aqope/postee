@@ -3,7 +3,7 @@
     <database>
         <server>localhost</server>
         <user>root</user>
-        <password>r00tisp0wer</password>
+        <password>root</password>
         <db>postee-db</db>
     </database>
     <extensions>
