@@ -4,13 +4,13 @@
  */
 ?>
 <body>
-    <p>
+    <div class="setup-menu">
         <h1>Welcome to postee</h1>
-        Please click next button to begin installation
-    </p>
-
-    <form method="post" action="index.php">
-        <input name="status" type="hidden" value="step-2">
-        <input type="submit" value="Next">
-    </form>
+        <p>Please follow the instructions to install Postee to your server</p>
+        <p>click next button to begin installation</p>
+        <form method="post" action="index.php">
+            <input name="status" type="hidden" value="step-2">
+            <input class="submit-button blue animate" type="submit" value="Next">
+        </form>
+    </div>
 </body>

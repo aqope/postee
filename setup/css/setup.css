@@ -1,0 +1,86 @@
+body {
+    background-color: #f5e9f5;
+}
+.setup-menu {
+    -webkit-box-shadow: 22px 24px 26px 12px #dbb267;
+    -moz-box-shadow: 22px 24px 26px 12px #dbb267;
+    box-shadow: 22px 24px 26px 12px #dbb267;
+    width: 500px;
+    height: 300px;
+    margin: 200px auto;
+    background-color: #f4d1d1;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-family: cursive;
+    padding: 10px 0;
+}
+
+.setup-menu h1 {
+    color: #717171;
+}
+
+.submit-button{
+    position: relative;
+    padding: 5px 40px;
+    margin: 15px 10px 10px 0;
+    border-radius: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: #f4d1d1;
+    text-decoration: none;
+    width: 30%;
+}
+
+.submit-button:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
+
+.submit-button:focus {
+    outline-color: #f4d1d1;
+}
+
+.blue
+{
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0 -2px #2980B9;
+}
+
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.form-control {
+    margin: 5px 0;
+}
+
+.field {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #fdedd9;
+    float: right;
+    margin-right: 70px;
+    padding-left: 10px;
+    font-family: monospace;
+}
+
+.field:focus {
+    outline: none;
+}
+
+.empty-field {
+    box-shadow: 0 0 10px red;
+    transition: box-shadow 1s;
+    -webkit-transition: box-shadow 1s;
+}
+
+#btn-finish {
+    width: 200px;
+}
