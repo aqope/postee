@@ -1,0 +1,36 @@
+<?php
+/**
+ *
+ */
+?>
+<head>
+    <script src="../js/validate.js"></script>
+</head>
+<body>
+    <h1>Setup</h1>
+    <form class="form-setup" method="post" action="index.php">
+        <div class="form-control">
+            <span>database host</span>
+            <input class="required" title="database host" name="db-host" type="text"/>
+        </div>
+        <div class="form-control">
+            <span>database user</span>
+            <input class="required" title="database user" name="db-user" type="text"/>
+        </div>
+        <div class="form-control">
+            <span>database password</span>
+            <input title="database password" name="db-password" type="text"/>
+        </div>
+        <div class="form-control">
+            <span>database name</span>
+            <input class="required" title="database name" name="db-name">
+        </div>
+        <input name="status" type="hidden" value="step-3">
+        <input title="submit" type="submit" value="Install">
+    </form>
+
+    <script>
+        validate.validateForm("form-setup", "empty-field")
+    </script>
+</body>
+

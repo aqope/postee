@@ -1,0 +1,12 @@
+<?php
+if ($error = initializeDatabaseTables($_POST)) : ?>
+    <div class="db-connection-error">
+        <h2> Something went wrong during database connection </h2>
+        <span><?php echo $error ?></span>
+        <form class="form-error" method="post" action="index.php">
+            <input name="status" type="hidden" value="step-2">
+            <input type="submit" value="retry">
+        </form>
+    </div>
+    <?php die(); ?>
+<?php endif ?>

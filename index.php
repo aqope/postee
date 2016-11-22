@@ -8,9 +8,8 @@
  * Validation for first run
  */
 if (!file_exists("app/config/config.xml")) {
-    echo "assa";
+    header("Location: setup/index.php");
     die();
 } else {
     include_once('app/core/includes.php');
 }
-
