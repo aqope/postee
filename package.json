@@ -1,0 +1,27 @@
+{
+  "name": "postee",
+  "version": "0.0.1",
+  "description": "Simple MVC Blogging Engine",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "less": "^2.7.1",
+    "less-cli": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aqope/postee.git"
+  },
+  "author": "Artur Paklin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aqope/postee/issues"
+  },
+  "homepage": "https://github.com/aqope/postee#readme"
+}
