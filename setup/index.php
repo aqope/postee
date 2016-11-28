@@ -12,11 +12,16 @@ $currentStep = empty($_POST["status"]) ? "step-1" : $_POST["status"];
 
 switch ($currentStep) {
     case "step-3":
-                include_once "template/error.phtml";
-                install($_POST);
-                include_once "template/finish.phtml";
-
-        break;
+        $connection = databaseConnection($_POST);
+        if (mysqli_connect_error()) {
+            include_once "template/error.phtml";
+            break;
+        } else {
+            createTables($connection);
+            install($_POST);
+            include_once "template/finish.phtml";
+            break;
+        }
     case "step-2":
         include_once "template/setup.phtml";
         break;
@@ -47,39 +52,87 @@ function install($postData) {
 }
 
 /**
- * Create initial tables in database
+ * Check connection to database
  * @param $dbData $_POST data from setup form
  *
  * @return string || boolean
  */
-function initializeDatabaseTables($dbData) {
+function databaseConnection($dbData) {
+    //Not to print non-styled error
+    error_reporting(0);
+
     $connection = new mysqli($dbData["db-host"], $dbData["db-user"], $dbData["db-password"], $dbData["db-name"]);
     if (mysqli_connect_error()) {
         return mysqli_connect_error();
     } else {
-        //if no error found, create tables
-        $sqls = [
-                "CREATE TABLE core_extension (
-                  id INT AUTO_INCREMENT PRIMARY KEY,
-                  extension_name VARCHAR(255),
-                  version VARCHAR(48)
-                )",
-                " CREATE TABLE core_posts (
-                  id INT AUTO_INCREMENT PRIMARY KEY,
-                  title VARCHAR(255),
-                  content TEXT,
-                  author VARCHAR(48),
-                  published_date VARCHAR(48),
-                  tags TEXT
-                );"
-        ];
+        error_reporting(1);
+        return $connection;
+    }
+}
 
-        foreach ($sqls as $sql) {
-            if (!$connection->query($sql) === TRUE) {
-                return $connection->error;
+/**
+ * Create initial tables in database
+ *
+ * @param $connection
+ * @return bool|string
+ */
+function createTables($connection)
+{
+    /* If you want to add new tables, keep current formatting */
+    $tableNames = [
+        "core_extension" => array(
+            "id" => array(
+                "INT",
+                "AUTO_INCREMENT",
+                "PRIMARY",
+                "KEY"
+            ),
+            "extension_name" => array(
+                "VARCHAR (255)"
+            ),
+            "version" => array(
+                "VARCHAR (48)"
+            )
+        ),
+        "core_posts" => array(
+            "id" => array(
+                "INT",
+                "AUTO_INCREMENT",
+                "PRIMARY",
+                "KEY"
+            ),
+            "title" => array(
+                "VARCHAR (255)"
+            ),
+            "content" => array(
+                "TEXT"
+            ),
+            "author" => array(
+                "VARCHAR (48)"
+            ),
+            "published_date" => array(
+                "VARCHAR (255)"
+            ),
+            "tags" => array(
+                "TEXT"
+            )
+        )
+    ];
+
+    foreach ($tableNames as $tableName => $tableColumns) {
+        $sql = "CREATE TABLE " . $tableName . " ( ";
+        foreach ($tableColumns as $tableColumn => $tableColumnParams) {
+            $sql .= " " . $tableColumn;
+            foreach ($tableColumnParams as $tableColumnParam) {
+                $sql .= " " . $tableColumnParam;
+            }
+            if(end(array_keys($tableColumns)) != $tableColumn) {
+                $sql .= ", ";
             }
         }
-
-        return false;
+        $sql .= " ); ";
+        mysqli_query($connection, $sql);
     }
+
+    return true;
 }

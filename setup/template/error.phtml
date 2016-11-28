@@ -1,12 +1,8 @@
-<?php
-if ($error = initializeDatabaseTables($_POST)) : ?>
-    <div class="db-connection-error setup-menu">
-        <h2> Something went wrong during database connection </h2>
-        <span><?php echo $error ?></span>
-        <form class="form-error" method="post" action="index.php">
-            <input name="status" type="hidden" value="step-2">
-            <input class="submit-button blue animate" type="submit" value="retry">
-        </form>
-    </div>
-    <?php die(); ?>
-<?php endif ?>
+<div class="db-connection-error setup-menu">
+    <h2> Something went wrong during database connection </h2>
+    <span><?php echo mysqli_connect_error() ?></span>
+    <form class="form-error" method="post" action="index.php">
+        <input name="status" type="hidden" value="step-2">
+        <input class="submit-button blue animate" type="submit" value="retry">
+    </form>
+</div>
