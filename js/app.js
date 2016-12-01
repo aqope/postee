@@ -8,9 +8,9 @@ document.observe("dom:loaded", function() {
 var loginForm = Class.create();
 loginForm.prototype = {
     initialize: function () {
-        var _this = this;
-        var submitButton = $('submit-form');
-        var submitForm = $('login-form');
+        var _this = this,
+            submitButton = $('submit-form'),
+            submitForm = $('login-form');
         Event.observe(submitButton, 'click', function (event) {
             Event.stop(event);
             if (_this.verify()) {
@@ -23,19 +23,7 @@ loginForm.prototype = {
     },
     // Verifies Input fields
     verify: function() {
-        var userInput = $$('input[name="user"]')[0];
-        var passInput = $$('input[type="password"]')[0];
-
-        if (userInput.value == "") {
-            console.log('Username is empty');
-            return false;
-        }
-
-        if(passInput.value == "") {
-            console.log('Password is empty');
-            return false;
-        }
-
-        return true;
+        return $$('input[name="user"]')[0].value !== "" && 
+            $$('input[type="password"]')[0].value !== "";
     }
 };
