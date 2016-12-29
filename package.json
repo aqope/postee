@@ -8,7 +8,8 @@
     "gulp-less": "^3.3.0",
     "less": "^2.7.1",
     "less-cli": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "semantic-ui": "^2.2.6"
   },
   "devDependencies": {},
   "scripts": {

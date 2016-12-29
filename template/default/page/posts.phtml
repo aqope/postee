@@ -1,27 +1,29 @@
-<h1>Posts</h1>
-<!-- This code part Must be deleted, only for sample data -->
-<?php $posts = $this->getPostsCollection(); ?>
-<div class="posts-body">
-    <?php foreach($posts as $post): ?>
-        <div class="post">
-            <div class="title">
-                <span><?php echo $post['title']; ?></span>
-            </div>
-            <div class="content">
-                <p> <?php echo $post['content']; ?></p>
-            </div>
-            <div class="content-data">
-                <span class="author"><?php echo $post['author']; ?></span>
-                <span class="date"><?php echo $post['published_date']; ?></span>
-            </div>
-            <div class="actions">
-                <a href="<?php echo '#'; ?>" post-id="<?php echo $post['id']; ?>">
-                    <div class="view-button">
-                        <span>View</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    <?php endforeach; ?>
+<div class="posts block">
+    <h1>Posts</h1>
+    <?php $posts = $this->getPostsCollection(); ?>
+    <div class="ui items posts">
+        <?php foreach($posts as $post): ?>
+            <div class="item">
+                <div class="ui small image">
 
+                </div>
+            
+            <div class="middle aligned content">
+                <div class="header">
+                    <?php echo $post['title']; ?>
+                </div>
+                <div class="description">
+                    <p><?php echo $post['content']; ?></p>
+                </div>
+                <div class="extra">
+                <a href="<?php echo '#'; ?>" post-id="<?php echo $post['id']; ?>">
+                    <div class="ui right floated button">
+                    View
+                    </div>
+                </a>   
+                </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>

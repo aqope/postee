@@ -3,8 +3,8 @@
     <database>
         <server>localhost</server>
         <user>root</user>
-        <password>root</password>
-        <db>postee-db</db>
+        <password></password>
+        <db>postee</db>
     </database>
     <extensions>
         <version>
