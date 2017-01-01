@@ -18,11 +18,20 @@ class Core_Model_Url extends Core_Model_Config
 
     public function getBaseUrl()
     {
+
+        if (substr($this->_base_url, -1) != '/') {
+            $this->_base_url = $this->_base_url . '/';
+        }
+
         return $this->_base_url;
     }
 
     public function getAbsoluteBaseUrl()
     {
+        if (substr($this->_absolute_base_url, -1) != '/') {
+            $this->_absolute_base_url = $this->_absolute_base_url . '/';
+        }
+
         return $this->_absolute_base_url;
     }
 

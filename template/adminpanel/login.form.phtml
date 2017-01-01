@@ -1,5 +1,5 @@
 <div class="login-form-wrapper">
-    <form id='login-form' action="/index.php/admin/index/authorize" method="post">
+    <form id='login-form' action="<?php echo $this->getBaseUrl(); ?>admin/index/authorize" method="post">
         <h1>Log in into Adminpanel</h1>
         <div class="login-form">
             <div class="username">
@@ -12,7 +12,7 @@
                 <input type="hidden" name="pass">
             </div>
             <div class="actions">
-                <input href="<?php echo $this->getBaseUrl() . 'admin/index/index'?>" id="submit-form" type="submit" value="Log in">
+                <input id="submit-form" type="submit" value="Log in">
             </div>
         </div>
     </form>
